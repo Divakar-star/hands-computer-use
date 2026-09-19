@@ -1,0 +1,32 @@
+{
+  "tenant": "lakeside",
+  "capability_id": "msc.member_savings_balance",
+  "base_version": "1.0.0",
+  "base_digest": "sha256:3d257b6ad928ea836c89492c666b6791a9839c9c341b64bb1b460e2ad676101b",
+  "notes": "Lakeside labels the search link 'Find' and the balance 'Avail Balance'. Additive only.",
+  "step_patches": {
+    "s3": {
+      "add_locators": [
+        {
+          "kind": "role_name",
+          "role": "link",
+          "name": "Find",
+          "value": null,
+          "group": null,
+          "ordinal": null,
+          "stability": "medium",
+          "note": "lakeside wording"
+        }
+      ],
+      "add_extraction_labels": {}
+    },
+    "s5": {
+      "add_locators": [],
+      "add_extraction_labels": {
+        "available_balance": [
+          "Avail Balance"
+        ]
+      }
+    }
+  }
+}

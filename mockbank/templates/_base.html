@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{{ T.console }}</title>
+<style>
+body{font:11px Verdana,Arial,sans-serif;color:#000;margin:8px;background:#fff}
+td{font:11px Verdana,Arial,sans-serif}
+.ttl{font:bold 14px Verdana;color:{{ T.accent }};border-bottom:2px solid {{ T.accent }};padding:4px 0}
+.lbl{background:#e8e8e0;font-weight:bold;padding:3px 6px;border:1px solid #c8c8c0;white-space:nowrap}
+.val{padding:3px 6px;border:1px solid #e0e0d8}
+.err{color:#c00000;font-weight:bold;padding:6px 0}
+.grid td{border:1px solid #c8c8c0;padding:3px 6px}
+.grid .h{background:{{ T.accent }};color:#fff;font-weight:bold}
+a{color:{{ T.accent }}}
+.btn{background:#e8e8e0;border:2px outset #fff;padding:2px 12px;text-decoration:none;color:#000;font:11px Verdana}
+</style></head>
+<body>
+{% block body %}{% endblock %}
+</body></html>

@@ -1,0 +1,502 @@
+{
+  "schema_version": "1.0",
+  "id": "msc.open_subaccount_to_review",
+  "version": "1.0.0",
+  "status": "verified",
+  "name": "open subaccount to review",
+  "description": "Fill the Open Sub-Account form for a member and stop at the review screen WITHOUT submitting. Nothing is committed; a person or an approved follow-up capability must confirm.",
+  "app": {
+    "product": "msc",
+    "product_version_seen": "MSC 7.2.1",
+    "tenant_recorded_on": "prairie"
+  },
+  "entry": "/msc/main",
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "description": "5-digit member number",
+      "required": true,
+      "pattern": "\\d{5}",
+      "sensitivity": "identifier"
+    },
+    {
+      "name": "account_type",
+      "type": "string",
+      "description": "Product to open",
+      "required": true,
+      "enum": [
+        "SAV",
+        "MMK"
+      ],
+      "sensitivity": "none",
+      "example": "SAV"
+    },
+    {
+      "name": "initial_deposit",
+      "type": "decimal",
+      "description": "Opening deposit in USD (minimum 5.00)",
+      "required": true,
+      "sensitivity": "none",
+      "example": "25.00"
+    },
+    {
+      "name": "nickname",
+      "type": "string",
+      "description": "Optional label, max 20 chars",
+      "required": true,
+      "sensitivity": "none",
+      "example": "Vacation"
+    },
+    {
+      "name": "member_consent_confirmed",
+      "type": "boolean",
+      "description": "Caller attests member consent/disclosures were provided",
+      "required": true,
+      "sensitivity": "none",
+      "example": "true"
+    }
+  ],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "s1",
+      "intent": "Click Open Sub-Account",
+      "action": "click",
+      "target": {
+        "description": "link 'Open Sub-Account'",
+        "frame": "nav",
+        "role": "link",
+        "locators": [
+          {
+            "kind": "href",
+            "value": "/msc/open",
+            "stability": "high",
+            "note": "link destination with parameters templated: independent of visible label"
+          },
+          {
+            "kind": "role_name",
+            "role": "link",
+            "name": "Open Sub-Account",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "frame_url",
+        "frame": "body",
+        "value": "/msc/open",
+        "of": [],
+        "describe": "frame 'body' lands on /msc/open"
+      },
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s2",
+      "intent": "Enter Member Number",
+      "action": "fill",
+      "target": {
+        "description": "textbox 'Member Number'",
+        "frame": "body",
+        "role": "textbox",
+        "locators": [
+          {
+            "kind": "field_name",
+            "role": "textbox",
+            "value": "o_mbr",
+            "stability": "high",
+            "note": "server-side field name: survives relabelling / tenant wording"
+          },
+          {
+            "kind": "role_name",
+            "role": "textbox",
+            "name": "Member Number",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "value": {
+        "param": "member_id"
+      },
+      "risk": "reversible",
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s3",
+      "intent": "Choose Account Type",
+      "action": "select",
+      "target": {
+        "description": "combobox 'Account Type'",
+        "frame": "body",
+        "role": "combobox",
+        "locators": [
+          {
+            "kind": "field_name",
+            "role": "combobox",
+            "value": "o_typ",
+            "stability": "high",
+            "note": "server-side field name: survives relabelling / tenant wording"
+          },
+          {
+            "kind": "role_name",
+            "role": "combobox",
+            "name": "Account Type",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "value": {
+        "param": "account_type"
+      },
+      "risk": "reversible",
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s4",
+      "intent": "Enter Initial Deposit",
+      "action": "fill",
+      "target": {
+        "description": "textbox 'Initial Deposit'",
+        "frame": "body",
+        "role": "textbox",
+        "locators": [
+          {
+            "kind": "field_name",
+            "role": "textbox",
+            "value": "o_dep",
+            "stability": "high",
+            "note": "server-side field name: survives relabelling / tenant wording"
+          },
+          {
+            "kind": "role_name",
+            "role": "textbox",
+            "name": "Initial Deposit",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "value": {
+        "param": "initial_deposit"
+      },
+      "risk": "reversible",
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s5",
+      "intent": "Enter Nickname (optional)",
+      "action": "fill",
+      "target": {
+        "description": "textbox 'Nickname (optional)'",
+        "frame": "body",
+        "role": "textbox",
+        "locators": [
+          {
+            "kind": "field_name",
+            "role": "textbox",
+            "value": "o_nick",
+            "stability": "high",
+            "note": "server-side field name: survives relabelling / tenant wording"
+          },
+          {
+            "kind": "role_name",
+            "role": "textbox",
+            "name": "Nickname (optional)",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "value": {
+        "param": "nickname"
+      },
+      "risk": "reversible",
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s6",
+      "intent": "Set Existing share draft",
+      "action": "check",
+      "target": {
+        "description": "radio 'Existing share draft' in group 'Funding Source'",
+        "frame": "body",
+        "role": "radio",
+        "locators": [
+          {
+            "kind": "field_name",
+            "role": "radio",
+            "name": "Existing share draft",
+            "value": "o_src",
+            "stability": "high",
+            "note": "server-side field name: survives relabelling / tenant wording"
+          },
+          {
+            "kind": "role_name",
+            "role": "radio",
+            "name": "Existing share draft",
+            "group": "Funding Source",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "value": {
+        "param": "member_consent_confirmed"
+      },
+      "risk": "reversible",
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s7",
+      "intent": "Set Member consent and disclosures provided",
+      "action": "check",
+      "target": {
+        "description": "checkbox 'Member consent and disclosures provided' in group 'Disclosures'",
+        "frame": "body",
+        "role": "checkbox",
+        "locators": [
+          {
+            "kind": "field_name",
+            "role": "checkbox",
+            "value": "o_cns",
+            "stability": "high",
+            "note": "server-side field name: survives relabelling / tenant wording"
+          },
+          {
+            "kind": "role_name",
+            "role": "checkbox",
+            "name": "Member consent and disclosures provided",
+            "group": "Disclosures",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "value": {
+        "param": "member_consent_confirmed"
+      },
+      "risk": "reversible",
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s8",
+      "intent": "Click Continue >>",
+      "action": "click",
+      "target": {
+        "description": "button 'Continue >>'",
+        "frame": "body",
+        "role": "button",
+        "locators": [
+          {
+            "kind": "role_name",
+            "role": "button",
+            "name": "Continue >>",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "frame_url",
+        "frame": "body",
+        "value": "/msc/open/review",
+        "of": [],
+        "describe": "frame 'body' lands on /msc/open/review"
+      },
+      "extractions": [],
+      "timeout_ms": 8000
+    }
+  ],
+  "success": {
+    "kind": "all",
+    "of": [
+      {
+        "kind": "frame_url",
+        "frame": "body",
+        "value": "/msc/open/review",
+        "of": [],
+        "describe": "frame 'body' lands on /msc/open/review"
+      },
+      {
+        "kind": "text_contains",
+        "value": "Confirm New Sub-Account",
+        "of": []
+      }
+    ],
+    "describe": "final screen matches the recorded goal state"
+  },
+  "outcomes": [
+    {
+      "code": "record_not_found",
+      "description": "The application reports there is no record for the number entered.",
+      "when": {
+        "kind": "text_contains",
+        "value": "No member record found",
+        "of": []
+      },
+      "caller_guidance": "No such member. Confirm the number with the requester; do not retry."
+    },
+    {
+      "code": "access_restricted",
+      "description": "The service account lacks authority to open this record (restricted / staff record).",
+      "when": {
+        "kind": "text_contains",
+        "value": "do not have the authority",
+        "of": []
+      },
+      "caller_guidance": "Not permitted for this service account. Route to a supervisor; do not retry."
+    },
+    {
+      "code": "input_rejected",
+      "description": "The application's own validation rejected an input.",
+      "when": {
+        "kind": "text_regex",
+        "value": "must be exactly|must be at least|may not exceed|must be a dollar|Select an account|Select a funding|must be confirmed",
+        "of": []
+      },
+      "caller_guidance": "An input was rejected by the application; correct it and call again."
+    }
+  ],
+  "recoverables": [
+    {
+      "code": "session_expired",
+      "description": "Session timed out; the app bounces to the sign-on page.",
+      "when": {
+        "kind": "any",
+        "of": [
+          {
+            "kind": "text_contains",
+            "value": "Your session has timed out",
+            "of": []
+          },
+          {
+            "kind": "frame_url",
+            "frame": "top",
+            "value": "/msc/login*",
+            "of": []
+          }
+        ]
+      },
+      "handler": {
+        "kind": "reauth",
+        "delay_ms": 500
+      },
+      "max_times": 1
+    },
+    {
+      "code": "compliance_notice",
+      "description": "Mid-flow compliance interstitial that must be acknowledged before continuing.",
+      "when": {
+        "kind": "text_contains",
+        "value": "You must acknowledge this notice",
+        "of": []
+      },
+      "handler": {
+        "kind": "click",
+        "target": {
+          "description": "Acknowledge button",
+          "frame": "body",
+          "role": "button",
+          "locators": [
+            {
+              "kind": "role_name",
+              "role": "button",
+              "name": "I Acknowledge",
+              "stability": "medium"
+            }
+          ],
+          "robustness": "single well-labelled control on a dedicated interstitial page"
+        },
+        "delay_ms": 500
+      },
+      "max_times": 2
+    },
+    {
+      "code": "transient_unavailable",
+      "description": "Host temporarily unavailable (HTTP 502/503/504); back off and reload.",
+      "when": {
+        "kind": "status_in",
+        "statuses": [
+          502,
+          503,
+          504
+        ],
+        "of": []
+      },
+      "handler": {
+        "kind": "reload_frame",
+        "delay_ms": 500
+      },
+      "max_times": 3
+    }
+  ],
+  "failure_signatures": [
+    {
+      "code": "application_error",
+      "description": "Raw application error page (HTTP 500 / unhandled exception).",
+      "when": {
+        "kind": "any",
+        "of": [
+          {
+            "kind": "status_in",
+            "statuses": [
+              500
+            ],
+            "of": []
+          },
+          {
+            "kind": "text_contains",
+            "value": "An unexpected error occurred",
+            "of": []
+          }
+        ]
+      },
+      "retriable": false
+    }
+  ],
+  "review": {
+    "max_risk": "reversible",
+    "irreversible_steps": [],
+    "reads": [],
+    "notes": [
+      "business outcomes/recoverables merged from the product profile 'msc' at record time; artifact is self-contained",
+      "structural (ordinal) locators are last-resort and only kept when nothing sturdier is unique"
+    ]
+  },
+  "provenance": {
+    "run_id": "discovery-20260919-105535-298",
+    "recorded_at": "2026-09-19T14:55:40+00:00",
+    "goal": "Start opening a new Share Savings sub-account for member [goal_id] with a $25.00 initial deposit, nickname 'Vacation', funded from the existing share draft, and get as far as the confirmation review screen. Do NOT submit it.",
+    "model": "scripted",
+    "discovery_steps": 9,
+    "human_assisted": false,
+    "transcript_ref": "discovery-20260919-105535-298/events.jsonl"
+  },
+  "verification": {
+    "passed": true,
+    "run_id": "verify-20260919-105540-987",
+    "at": "2026-09-19T14:55:45+00:00",
+    "note": "reproduced 0 model-read value(s) in a fresh session with no LLM"
+  },
+  "digest": "sha256:dab35f3a1166c13709be1ffa0477cf7bf97ebdd6cd955bf6a199785645fc9f76"
+}

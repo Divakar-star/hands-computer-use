@@ -1,0 +1,24 @@
+{
+  "run_id": "replay-BLOCKED-irreversible-understated-20260919-105640-270",
+  "capability_id": "msc.open_subaccount_to_review",
+  "capability_version": "1.0.0",
+  "tenant": null,
+  "status": "blocked",
+  "outcome": null,
+  "outputs": {},
+  "failure": {
+    "category": "policy_violation",
+    "step_id": "s99",
+    "message": "irreversible step requires approval and none was given",
+    "expected": "approval for this step (approvals={...})",
+    "observed": null,
+    "retriable": true,
+    "evidence": {}
+  },
+  "recoveries": [],
+  "drift": [],
+  "handoffs": [],
+  "steps_completed": 8,
+  "duration_ms": 3467,
+  "message": ""
+}

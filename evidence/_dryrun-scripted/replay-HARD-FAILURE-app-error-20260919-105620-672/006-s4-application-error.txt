@@ -1,0 +1,51 @@
+<!-- frame top http://127.0.0.1:8765/msc/main status=200 -->
+<!DOCTYPE html><html><head><title>Prairie Federal Credit Union - Member Servicing Console</title></head>
+<frameset rows="52,*" border="0" frameborder="0" framespacing="0">
+  <frame src="/msc/hdr" name="hdr" scrolling="no" noresize="">
+  <frameset cols="190,*" border="1" frameborder="1" framespacing="0">
+    <frame src="/msc/nav" name="nav" noresize="">
+    <frame src="/msc/home" name="body">
+  </frameset>
+</frameset>
+<noframes><body>This application requires a frames-capable browser.</body></noframes>
+</html>
+<!-- frame hdr http://127.0.0.1:8765/msc/hdr status=None -->
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style>body{margin:0;background:#1f4e79;font:11px Verdana;color:#fff}td{font:11px Verdana;color:#fff}a{color:#fff}</style></head>
+<body><table width="100%" height="52" cellpadding="6" cellspacing="0"><tbody><tr>
+<td><font size="3"><b>Prairie Federal Credit Union</b></font><br>Member Servicing Console &nbsp;|&nbsp; MSC 7.2.1</td>
+<td align="right">User: teller01 (teller) &nbsp;|&nbsp; Signed on 10:56:21<br>09/19/2026 10:56 &nbsp;|&nbsp; <a href="/msc/logoff" target="_top" data-hands-ref="0">Sign Off</a></td>
+</tr></tbody></table></body></html>
+<!-- frame nav http://127.0.0.1:8765/msc/nav status=None -->
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>body{margin:0;background:#e8e8e0;font:11px Verdana}td{font:11px Verdana}a{color:#000;text-decoration:none;display:block;padding:5px 10px}a:hover{background:#c8c8c0}.sec{background:#b8b8b0;font-weight:bold;padding:3px 10px}</style></head>
+<body><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr><td class="sec">MAIN</td></tr>
+<tr><td><a href="/msc/home" target="body" data-hands-ref="1">Home</a></td></tr>
+<tr><td class="sec">SERVICING</td></tr>
+<tr><td><a href="/msc/inq" target="body" data-hands-ref="2">Member Inquiry</a></td></tr>
+<tr><td><a href="/msc/open" target="body" data-hands-ref="3">Open Sub-Account</a></td></tr>
+<tr><td class="sec">ADMIN</td></tr>
+<tr><td><a href="/msc/reports" target="body" data-hands-ref="4">Reports</a></td></tr>
+</tbody></table></body></html>
+<!-- frame body http://127.0.0.1:8765/msc/acct/[member_id]-S01 status=500 -->
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Member Servicing Console</title>
+<style>
+body{font:11px Verdana,Arial,sans-serif;color:#000;margin:8px;background:#fff}
+td{font:11px Verdana,Arial,sans-serif}
+.ttl{font:bold 14px Verdana;color:#1f4e79;border-bottom:2px solid #1f4e79;padding:4px 0}
+.lbl{background:#e8e8e0;font-weight:bold;padding:3px 6px;border:1px solid #c8c8c0;white-space:nowrap}
+.val{padding:3px 6px;border:1px solid #e0e0d8}
+.err{color:#c00000;font-weight:bold;padding:6px 0}
+.grid td{border:1px solid #c8c8c0;padding:3px 6px}
+.grid .h{background:#1f4e79;color:#fff;font-weight:bold}
+a{color:#1f4e79}
+.btn{background:#e8e8e0;border:2px outset #fff;padding:2px 12px;text-decoration:none;color:#000;font:11px Verdana}
+</style></head>
+<body>
+
+<table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td class="ttl">Application Error</td></tr>
+<tr><td class="err" style="padding-top:10px">An unexpected error occurred while processing your request.</td></tr>
+<tr><td><pre style="color:#555">ORA-00942: table or view does not exist (ACCT_BAL_VW) at line 88 of pkg_acct_inq</pre></td></tr></tbody></table>
+
+</body></html>

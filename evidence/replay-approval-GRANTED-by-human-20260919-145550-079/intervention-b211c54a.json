@@ -1,0 +1,25 @@
+{
+  "ticket_id": "b211c54a",
+  "reason": "needs_approval",
+  "summary": "Step 'Confirm and submit the new sub-account' is IRREVERSIBLE (rule 'commit new sub-account': button 'Confirm and Submit'). Approve = 'Retry the step' (automation performs it); 'I completed the step' if you did it; Abort = deny.",
+  "run_id": "replay-approval-GRANTED-by-human-20260919-145550-079",
+  "capability_or_goal": "msc.open_subaccount_to_review@1.0.0",
+  "step_id": "s99",
+  "url": "http://127.0.0.1:8765/msc/open/review",
+  "context": {
+    "step_intent": "Confirm and submit the new sub-account",
+    "observed": "[hdr] http://127.0.0.1:8765/msc/hdr status=None: Prairie Federal Credit Union Member Servicing Console | MSC 7.2.1 User: teller01 (teller) | Signed on 14:55:50 09/19/2026 14:55 | Sign Off | [nav] http://127.0.0.1:8765/msc/nav status=None: MAIN Home SERVICING Member Inquiry Open Sub-Account ADMIN Reports | [body] http://127.0.0.1:8765/msc/open/review status=200: Confirm New Sub-Account - Step 2 of 2 Member Number [member_number] - [NAME] Account Type Share Savings Initial Deposit $25.00 Nickname Vacation Funding Source Existing share draft Review the details above. Confirming posts this account to the core system and cannot be reversed. Cancel",
+    "inputs_provided": [
+      "member_number",
+      "account_type",
+      "initial_deposit",
+      "nickname",
+      "member_consent_and_disclosures_provided"
+    ]
+  },
+  "evidence": {
+    "screenshot": "replay-approval-GRANTED-by-human-20260919-145550-079\\shots\\011-s99-needs-approval.png",
+    "dom_snapshot": "replay-approval-GRANTED-by-human-20260919-145550-079\\011-s99-needs-approval.txt"
+  },
+  "created_at": 1789844154.4212003
+}

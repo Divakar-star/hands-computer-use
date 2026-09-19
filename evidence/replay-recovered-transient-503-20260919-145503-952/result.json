@@ -1,0 +1,25 @@
+{
+  "run_id": "replay-recovered-transient-503-20260919-145503-952",
+  "capability_id": "msc.member_savings_balance",
+  "capability_version": "1.0.0",
+  "tenant": null,
+  "status": "success",
+  "outcome": null,
+  "outputs": {
+    "available_balance": "****.37"
+  },
+  "failure": null,
+  "recoveries": [
+    {
+      "code": "transient_unavailable",
+      "step_id": "s3",
+      "action": "backed off and reloaded the frame",
+      "attempts": 2
+    }
+  ],
+  "drift": [],
+  "handoffs": [],
+  "steps_completed": 5,
+  "duration_ms": 4440,
+  "message": "completed and verified the success checkpoint"
+}

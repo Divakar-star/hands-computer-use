@@ -1,0 +1,25 @@
+{
+  "run_id": "replay-recovered-session-timeout-20260919-145509-310",
+  "capability_id": "msc.member_savings_balance",
+  "capability_version": "1.0.0",
+  "tenant": null,
+  "status": "success",
+  "outcome": null,
+  "outputs": {
+    "available_balance": "****.37"
+  },
+  "failure": null,
+  "recoveries": [
+    {
+      "code": "session_expired",
+      "step_id": "s1",
+      "action": "re-authenticated and restarted the flow from step 1",
+      "attempts": 1
+    }
+  ],
+  "drift": [],
+  "handoffs": [],
+  "steps_completed": 5,
+  "duration_ms": 3660,
+  "message": "completed and verified the success checkpoint"
+}

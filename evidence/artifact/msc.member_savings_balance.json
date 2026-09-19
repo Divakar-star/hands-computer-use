@@ -1,0 +1,362 @@
+{
+  "schema_version": "1.0",
+  "id": "msc.member_savings_balance",
+  "version": "1.0.0",
+  "status": "verified",
+  "name": "member savings balance",
+  "description": "Look up a member by member number and read the available balance of their savings account.",
+  "app": {
+    "product": "msc",
+    "product_version_seen": "MSC 7.2.1",
+    "tenant_recorded_on": "prairie"
+  },
+  "entry": "/msc/main",
+  "inputs": [
+    {
+      "name": "member_number",
+      "type": "string",
+      "description": "Member number used for the inquiry.",
+      "required": true,
+      "pattern": "^[0-9]+$",
+      "sensitivity": "identifier"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "available_balance",
+      "type": "decimal",
+      "description": "Available balance for the member's share savings account.",
+      "sensitivity": "financial",
+      "required": true
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "intent": "Click Member Inquiry",
+      "action": "click",
+      "target": {
+        "description": "link 'Member Inquiry'",
+        "frame": "nav",
+        "role": "link",
+        "locators": [
+          {
+            "kind": "href",
+            "value": "/msc/inq",
+            "stability": "high",
+            "note": "link destination with parameters templated: independent of visible label"
+          },
+          {
+            "kind": "role_name",
+            "role": "link",
+            "name": "Member Inquiry",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "frame_url",
+        "frame": "body",
+        "value": "/msc/inq",
+        "of": [],
+        "describe": "frame 'body' lands on /msc/inq"
+      },
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s2",
+      "intent": "Enter Member Number",
+      "action": "fill",
+      "target": {
+        "description": "textbox 'Member Number'",
+        "frame": "body",
+        "role": "textbox",
+        "locators": [
+          {
+            "kind": "field_name",
+            "role": "textbox",
+            "value": "f_mbr",
+            "stability": "high",
+            "note": "server-side field name: survives relabelling / tenant wording"
+          },
+          {
+            "kind": "role_name",
+            "role": "textbox",
+            "name": "Member Number",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "value": {
+        "param": "member_number"
+      },
+      "risk": "reversible",
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s3",
+      "intent": "Click Search",
+      "action": "click",
+      "target": {
+        "description": "link 'Search'",
+        "frame": "body",
+        "role": "link",
+        "locators": [
+          {
+            "kind": "role_name",
+            "role": "link",
+            "name": "Search",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "frame_url",
+        "frame": "body",
+        "value": "/msc/member/{{member_number}}",
+        "of": [],
+        "describe": "frame 'body' lands on /msc/member/{{member_number}}"
+      },
+      "extractions": [],
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s4",
+      "intent": "Click Share Savings",
+      "action": "click",
+      "target": {
+        "description": "link 'Share Savings'",
+        "frame": "body",
+        "role": "link",
+        "locators": [
+          {
+            "kind": "href",
+            "value": "/msc/acct/{{member_number}}-S01",
+            "stability": "high",
+            "note": "link destination with parameters templated: independent of visible label"
+          },
+          {
+            "kind": "role_name",
+            "role": "link",
+            "name": "Share Savings",
+            "stability": "medium",
+            "note": "what a human sees: role + accessible name (incl. adjacent label cell)"
+          }
+        ],
+        "robustness": "ordered by resilience: machine identifiers (field name / href) first because they survive relabelling across tenants; then role+name; positional last. Every listed locator was verified unique on the recorded screen; dropped as non-unique: []"
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "frame_url",
+        "frame": "body",
+        "value": "/msc/acct/{{member_number}}-S01",
+        "of": [],
+        "describe": "frame 'body' lands on /msc/acct/{{member_number}}-S01"
+      },
+      "extractions": [],
+      "on_target_missing": "no_share_savings_account",
+      "timeout_ms": 8000
+    },
+    {
+      "id": "s5",
+      "intent": "Read 'Available Balance' as available_balance",
+      "action": "extract",
+      "risk": "safe",
+      "extractions": [
+        {
+          "kind": "labeled_value",
+          "output": "available_balance",
+          "labels": [
+            "Available Balance"
+          ],
+          "frame": "body"
+        }
+      ],
+      "timeout_ms": 8000
+    }
+  ],
+  "success": {
+    "kind": "all",
+    "of": [
+      {
+        "kind": "frame_url",
+        "frame": "body",
+        "value": "/msc/acct/{{member_number}}-S01",
+        "of": [],
+        "describe": "frame 'body' lands on /msc/acct/{{member_number}}-S01"
+      }
+    ],
+    "describe": "final screen matches the recorded goal state"
+  },
+  "outcomes": [
+    {
+      "code": "record_not_found",
+      "description": "The application reports there is no record for the number entered.",
+      "when": {
+        "kind": "text_contains",
+        "value": "No member record found",
+        "of": []
+      },
+      "caller_guidance": "No such member. Confirm the number with the requester; do not retry."
+    },
+    {
+      "code": "access_restricted",
+      "description": "The service account lacks authority to open this record (restricted / staff record).",
+      "when": {
+        "kind": "text_contains",
+        "value": "do not have the authority",
+        "of": []
+      },
+      "caller_guidance": "Not permitted for this service account. Route to a supervisor; do not retry."
+    },
+    {
+      "code": "input_rejected",
+      "description": "The application's own validation rejected an input.",
+      "when": {
+        "kind": "text_regex",
+        "value": "must be exactly|must be at least|may not exceed|must be a dollar|Select an account|Select a funding|must be confirmed",
+        "of": []
+      },
+      "caller_guidance": "An input was rejected by the application; correct it and call again."
+    },
+    {
+      "code": "no_share_savings_account",
+      "description": "The member may not have a Share Savings account available to select.",
+      "caller_guidance": "The member may not have a Share Savings account available to select."
+    }
+  ],
+  "recoverables": [
+    {
+      "code": "session_expired",
+      "description": "Session timed out; the app bounces to the sign-on page.",
+      "when": {
+        "kind": "any",
+        "of": [
+          {
+            "kind": "text_contains",
+            "value": "Your session has timed out",
+            "of": []
+          },
+          {
+            "kind": "frame_url",
+            "frame": "top",
+            "value": "/msc/login*",
+            "of": []
+          }
+        ]
+      },
+      "handler": {
+        "kind": "reauth",
+        "delay_ms": 500
+      },
+      "max_times": 1
+    },
+    {
+      "code": "compliance_notice",
+      "description": "Mid-flow compliance interstitial that must be acknowledged before continuing.",
+      "when": {
+        "kind": "text_contains",
+        "value": "You must acknowledge this notice",
+        "of": []
+      },
+      "handler": {
+        "kind": "click",
+        "target": {
+          "description": "Acknowledge button",
+          "frame": "body",
+          "role": "button",
+          "locators": [
+            {
+              "kind": "role_name",
+              "role": "button",
+              "name": "I Acknowledge",
+              "stability": "medium"
+            }
+          ],
+          "robustness": "single well-labelled control on a dedicated interstitial page"
+        },
+        "delay_ms": 500
+      },
+      "max_times": 2
+    },
+    {
+      "code": "transient_unavailable",
+      "description": "Host temporarily unavailable (HTTP 502/503/504); back off and reload.",
+      "when": {
+        "kind": "status_in",
+        "statuses": [
+          502,
+          503,
+          504
+        ],
+        "of": []
+      },
+      "handler": {
+        "kind": "reload_frame",
+        "delay_ms": 500
+      },
+      "max_times": 3
+    }
+  ],
+  "failure_signatures": [
+    {
+      "code": "application_error",
+      "description": "Raw application error page (HTTP 500 / unhandled exception).",
+      "when": {
+        "kind": "any",
+        "of": [
+          {
+            "kind": "status_in",
+            "statuses": [
+              500
+            ],
+            "of": []
+          },
+          {
+            "kind": "text_contains",
+            "value": "An unexpected error occurred",
+            "of": []
+          }
+        ]
+      },
+      "retriable": false
+    }
+  ],
+  "review": {
+    "max_risk": "reversible",
+    "irreversible_steps": [],
+    "reads": [
+      "available_balance"
+    ],
+    "notes": [
+      "business outcomes/recoverables merged from the product profile 'msc' at record time; artifact is self-contained",
+      "structural (ordinal) locators are last-resort and only kept when nothing sturdier is unique"
+    ]
+  },
+  "provenance": {
+    "run_id": "discovery-20260919-145405-177",
+    "recorded_at": "2026-09-19T18:54:18+00:00",
+    "goal": "Look up member [goal_id] in the member servicing console and read their savings account's available balance.",
+    "model": "gpt-5.6-luna",
+    "discovery_steps": 6,
+    "human_assisted": false,
+    "transcript_ref": "discovery-20260919-145405-177/events.jsonl"
+  },
+  "verification": {
+    "passed": true,
+    "run_id": "verify-20260919-145418-503",
+    "at": "2026-09-19T18:54:22+00:00",
+    "note": "reproduced 1 model-read value(s) in a fresh session with no LLM"
+  },
+  "digest": "sha256:3d257b6ad928ea836c89492c666b6791a9839c9c341b64bb1b460e2ad676101b"
+}

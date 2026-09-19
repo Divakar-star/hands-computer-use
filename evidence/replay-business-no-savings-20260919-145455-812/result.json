@@ -1,0 +1,16 @@
+{
+  "run_id": "replay-business-no-savings-20260919-145455-812",
+  "capability_id": "msc.member_savings_balance",
+  "capability_version": "1.0.0",
+  "tenant": null,
+  "status": "business_outcome",
+  "outcome": "no_share_savings_account",
+  "outputs": {},
+  "failure": null,
+  "recoveries": [],
+  "drift": [],
+  "handoffs": [],
+  "steps_completed": 3,
+  "duration_ms": 3449,
+  "message": "The member may not have a Share Savings account available to select."
+}

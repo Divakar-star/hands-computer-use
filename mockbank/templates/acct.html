@@ -1,0 +1,20 @@
+{% extends "_base.html" %}{% block body %}
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td class="ttl">{{ T.products[a.product] }} &raquo; {{ a.number }}</td></tr>
+<tr><td style="padding-top:8px">
+<table cellpadding="0" cellspacing="3">
+<tr><td class="lbl">Account Holder</td><td class="val">{{ m.name }} ({{ m.number }})</td></tr>
+<tr><td class="lbl">Account Status</td><td class="val">{{ a.status }}</td></tr>
+<tr><td class="lbl">{{ T.cur_label }}</td><td class="val"><b>{{ money(a.current_cents) }}</b></td></tr>
+<tr><td class="lbl">{{ T.avail_label }}</td><td class="val"><b>{{ money(a.available_cents) }}</b></td></tr>
+<tr><td class="lbl">Last Activity</td><td class="val">{{ a.last_activity }}</td></tr>
+</table></td></tr>
+{% if a.txns %}
+<tr><td style="padding-top:14px"><b>Recent Activity</b>
+<table class="grid" width="100%" cellpadding="0" cellspacing="0" style="margin-top:4px;border-collapse:collapse">
+<tr><td class="h">Date</td><td class="h">Description</td><td class="h" align="right">Amount</td></tr>
+{% for t in a.txns %}<tr><td>{{ t.date }}</td><td>{{ t.desc }}</td><td align="right">{{ money(t.cents) }}</td></tr>{% endfor %}
+</table></td></tr>
+{% endif %}
+<tr><td style="padding-top:12px"><a href="/msc/member/{{ m.number }}">&laquo; Back to member</a></td></tr>
+</table>
+{% endblock %}

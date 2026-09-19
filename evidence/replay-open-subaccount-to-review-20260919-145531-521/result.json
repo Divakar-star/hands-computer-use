@@ -1,0 +1,16 @@
+{
+  "run_id": "replay-open-subaccount-to-review-20260919-145531-521",
+  "capability_id": "msc.open_subaccount_to_review",
+  "capability_version": "1.0.0",
+  "tenant": null,
+  "status": "success",
+  "outcome": null,
+  "outputs": {},
+  "failure": null,
+  "recoveries": [],
+  "drift": [],
+  "handoffs": [],
+  "steps_completed": 8,
+  "duration_ms": 3683,
+  "message": "completed and verified the success checkpoint"
+}

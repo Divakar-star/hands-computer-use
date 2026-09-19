@@ -1,0 +1,21 @@
+{
+  "ticket_id": "9d12a0ce",
+  "reason": "unexpected_state",
+  "summary": "Step 'Click Search': expected frame 'body' lands on /msc/member/{{member_number}} but the screen shows something unfamiliar.",
+  "run_id": "replay-HANDOFF-human-takeover-20260919-145555-092",
+  "capability_or_goal": "msc.member_savings_balance@1.0.0",
+  "step_id": "s3",
+  "url": "http://127.0.0.1:8765/msc/inq/find",
+  "context": {
+    "step_intent": "Click Search",
+    "observed": "[hdr] http://127.0.0.1:8765/msc/hdr status=None: Prairie Federal Credit Union Member Servicing Console | MSC 7.2.1 User: teller01 (teller) | Signed on 14:55:56 09/19/2026 14:55 | Sign Off | [nav] http://127.0.0.1:8765/msc/nav status=None: MAIN Home SERVICING Member Inquiry Open Sub-Account ADMIN Reports | [body] http://127.0.0.1:8765/msc/inq/find status=200: Compliance Notice Member records contain nonpublic personal information. Access is logged and must have a legitimate servicing purpose. You must acknowledge this notice before continuing. ",
+    "inputs_provided": [
+      "member_number"
+    ]
+  },
+  "evidence": {
+    "screenshot": "replay-HANDOFF-human-takeover-20260919-145555-092\\shots\\005-s3-unexpected-state.png",
+    "dom_snapshot": "replay-HANDOFF-human-takeover-20260919-145555-092\\005-s3-unexpected-state.txt"
+  },
+  "created_at": 1789844159.472631
+}

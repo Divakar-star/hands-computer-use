@@ -1,0 +1,58 @@
+<!-- frame top http://127.0.0.1:8766/msc/main status=200 -->
+<!DOCTYPE html><html><head><title>Lakeside Community Bank - Customer Service Workstation</title></head>
+<frameset rows="52,*" border="0" frameborder="0" framespacing="0">
+  <frame src="/msc/hdr" name="hdr" scrolling="no" noresize="">
+  <frameset cols="190,*" border="1" frameborder="1" framespacing="0">
+    <frame src="/msc/nav" name="nav" noresize="">
+    <frame src="/msc/home" name="body">
+  </frameset>
+</frameset>
+<noframes><body>This application requires a frames-capable browser.</body></noframes>
+</html>
+<!-- frame hdr http://127.0.0.1:8766/msc/hdr status=None -->
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style>body{margin:0;background:#7a2e2e;font:11px Verdana;color:#fff}td{font:11px Verdana;color:#fff}a{color:#fff}</style></head>
+<body><table width="100%" height="52" cellpadding="6" cellspacing="0"><tbody><tr>
+<td><font size="3"><b>Lakeside Community Bank</b></font><br>Customer Service Workstation &nbsp;|&nbsp; MSC 7.4.0</td>
+<td align="right">User: teller01 (teller) &nbsp;|&nbsp; Signed on 14:56:01<br>09/19/2026 14:56 &nbsp;|&nbsp; <a href="/msc/logoff" target="_top" data-hands-ref="0">Sign Off</a></td>
+</tr></tbody></table></body></html>
+<!-- frame nav http://127.0.0.1:8766/msc/nav status=None -->
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>body{margin:0;background:#e8e8e0;font:11px Verdana}td{font:11px Verdana}a{color:#000;text-decoration:none;display:block;padding:5px 10px}a:hover{background:#c8c8c0}.sec{background:#b8b8b0;font-weight:bold;padding:3px 10px}</style></head>
+<body><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr><td class="sec">MAIN</td></tr>
+<tr><td><a href="/msc/home" target="body" data-hands-ref="1">Start</a></td></tr>
+<tr><td class="sec">SERVICING</td></tr>
+<tr><td><a href="/msc/inq" target="body" data-hands-ref="2">Customer Lookup</a></td></tr>
+<tr><td><a href="/msc/open" target="body" data-hands-ref="3">New Sub-Account</a></td></tr>
+<tr><td class="sec">ADMIN</td></tr>
+<tr><td><a href="/msc/reports" target="body" data-hands-ref="4">Reporting</a></td></tr>
+</tbody></table></body></html>
+<!-- frame body http://127.0.0.1:8766/msc/inq status=200 -->
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Customer Service Workstation</title>
+<style>
+body{font:11px Verdana,Arial,sans-serif;color:#000;margin:8px;background:#fff}
+td{font:11px Verdana,Arial,sans-serif}
+.ttl{font:bold 14px Verdana;color:#7a2e2e;border-bottom:2px solid #7a2e2e;padding:4px 0}
+.lbl{background:#e8e8e0;font-weight:bold;padding:3px 6px;border:1px solid #c8c8c0;white-space:nowrap}
+.val{padding:3px 6px;border:1px solid #e0e0d8}
+.err{color:#c00000;font-weight:bold;padding:6px 0}
+.grid td{border:1px solid #c8c8c0;padding:3px 6px}
+.grid .h{background:#7a2e2e;color:#fff;font-weight:bold}
+a{color:#7a2e2e}
+.btn{background:#e8e8e0;border:2px outset #fff;padding:2px 12px;text-decoration:none;color:#000;font:11px Verdana}
+</style></head>
+<body>
+
+<table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td class="ttl">Customer Lookup</td></tr>
+
+<tr><td style="padding-top:10px">
+<form method="post" action="/msc/inq/find">
+<table cellpadding="0" cellspacing="4">
+<tbody><tr><td class="lbl">Branch</td><td class="val"><select name="f_brn" data-hands-ref="5"><option>All branches</option><option>001 - Main</option><option>002 - North</option></select></td></tr>
+<tr><td class="lbl">Cust. #</td><td class="val"><input type="text" name="f_mbr" size="10" maxlength="10" value="" autocomplete="off" data-hands-ref="6" style=""></td></tr>
+<tr><td></td><td style="padding-top:6px"><a class="btn" href="javascript:void(0)" onclick="document.forms[0].submit();return false;" data-hands-ref="7">Find</a></td></tr>
+</tbody></table></form>
+</td></tr></tbody></table>
+
+</body></html>

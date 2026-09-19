@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{{ T.brand }} - Sign On</title>
+<style>body{font:12px Verdana;background:#d4d0c8;margin:0}td{font:12px Verdana}.err{color:#c00000;font-weight:bold}</style>
+<script>
+/* classic frame-buster: an expired session loads this page inside a frame */
+if (top !== self) { top.location.href = self.location.href; }
+</script></head>
+<body>
+<table width="100%" height="100%" cellpadding="0" cellspacing="0"><tr><td align="center" valign="middle">
+<table width="380" cellpadding="8" cellspacing="0" bgcolor="#ffffff" style="border:2px solid {{ T.accent }}">
+<tr><td bgcolor="{{ T.accent }}"><font color="#ffffff" size="3"><b>{{ T.brand }}</b></font><br><font color="#dddddd">{{ T.console }} &nbsp; {{ T.version }}</font></td></tr>
+<tr><td>
+{% if expired %}<div class="err">Your session has timed out. Please sign on again.</div><br>{% endif %}
+{% if error %}<div class="err">{{ error }}</div><br>{% endif %}
+<form method="post" action="/msc/login">
+<table cellpadding="4">
+<tr><td>User ID</td><td><input type="text" name="USRID" size="18" autocomplete="off"></td></tr>
+<tr><td>Password</td><td><input type="password" name="PWD" size="18" autocomplete="off"></td></tr>
+<tr><td></td><td><input type="submit" value="Sign On"></td></tr>
+</table></form>
+<font color="#777777">Authorized staff only. Activity is monitored.</font>
+</td></tr></table>
+</td></tr></table>
+</body></html>

@@ -1,0 +1,34 @@
+{
+  "run_id": "replay-HARD-FAILURE-transient-exhausted-20260919-145524-718",
+  "capability_id": "msc.member_savings_balance",
+  "capability_version": "1.0.0",
+  "tenant": null,
+  "status": "failed",
+  "outcome": null,
+  "outputs": {},
+  "failure": {
+    "category": "app_error",
+    "step_id": "s3",
+    "message": "recoverable 'transient_unavailable' persisted after 3 attempt(s)",
+    "expected": "step 'Click Search' to complete",
+    "observed": "[hdr] http://127.0.0.1:8765/msc/hdr status=None: Prairie Federal Credit Union Member Servicing Console | MSC 7.2.1 User: teller01 (teller) | Signed on 14:55:25 09/19/2026 14:55 | Sign Off | [nav] http://127.0.0.1:8765/msc/nav status=None: MAIN Home SERVICING Member Inquiry Open Sub-Account ADMIN Reports | [body] http://127.0.0.1:8765/msc/member/[member_number] status=503: Service Unavailable The host is temporarily unavailable (SVC-503). Please wait a moment and retry.",
+    "retriable": true,
+    "evidence": {
+      "screenshot": "replay-HARD-FAILURE-transient-exhausted-20260919-145524-718\\shots\\008-s3-transient-unavailable-exhausted.png",
+      "dom_snapshot": "replay-HARD-FAILURE-transient-exhausted-20260919-145524-718\\008-s3-transient-unavailable-exhausted.txt"
+    }
+  },
+  "recoveries": [
+    {
+      "code": "transient_unavailable",
+      "step_id": "s3",
+      "action": "backed off and reloaded the frame",
+      "attempts": 3
+    }
+  ],
+  "drift": [],
+  "handoffs": [],
+  "steps_completed": 2,
+  "duration_ms": 5806,
+  "message": ""
+}

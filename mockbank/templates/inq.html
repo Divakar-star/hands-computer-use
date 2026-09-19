@@ -1,0 +1,12 @@
+{% extends "_base.html" %}{% block body %}
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td class="ttl">{{ T.nav_inq }}</td></tr>
+{% if error %}<tr><td class="err">{{ error }}</td></tr>{% endif %}
+<tr><td style="padding-top:10px">
+<form method="post" action="/msc/inq/find">
+<table cellpadding="0" cellspacing="4">
+<tr><td class="lbl">Branch</td><td class="val"><select name="f_brn"><option>All branches</option><option>001 - Main</option><option>002 - North</option></select></td></tr>
+<tr><td class="lbl">{{ T.member_label }}</td><td class="val"><input type="text" name="f_mbr" size="10" maxlength="10" value="{{ value }}" autocomplete="off"></td></tr>
+<tr><td></td><td style="padding-top:6px"><a class="btn" href="javascript:void(0)" onclick="document.forms[0].submit();return false;">{{ T.search_btn }}</a></td></tr>
+</table></form>
+</td></tr></table>
+{% endblock %}

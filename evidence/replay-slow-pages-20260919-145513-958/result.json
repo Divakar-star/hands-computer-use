@@ -1,0 +1,18 @@
+{
+  "run_id": "replay-slow-pages-20260919-145513-958",
+  "capability_id": "msc.member_savings_balance",
+  "capability_version": "1.0.0",
+  "tenant": null,
+  "status": "success",
+  "outcome": null,
+  "outputs": {
+    "available_balance": "****.37"
+  },
+  "failure": null,
+  "recoveries": [],
+  "drift": [],
+  "handoffs": [],
+  "steps_completed": 5,
+  "duration_ms": 6560,
+  "message": "completed and verified the success checkpoint"
+}

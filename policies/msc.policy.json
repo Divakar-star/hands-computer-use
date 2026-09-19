@@ -1,0 +1,26 @@
+{
+  "allowed_origins": [
+    "http://127.0.0.1:8765"
+  ],
+  "allowed_path_globs": [
+    "/msc/*"
+  ],
+  "denied_path_globs": [
+    "/__admin*",
+    "/msc/logoff*"
+  ],
+  "risk_rules": [
+    {
+      "name": "sign-off (ends the session)",
+      "risk": "forbidden",
+      "name_regex": "^\\s*(sign|log)\\s?(off|out)\\s*$",
+      "href_regex": "/msc/logoff"
+    },
+    {
+      "name": "commit new sub-account",
+      "risk": "irreversible",
+      "form_action_regex": "/msc/open/commit"
+    }
+  ],
+  "max_steps": 25
+}

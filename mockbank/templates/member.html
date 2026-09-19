@@ -1,0 +1,25 @@
+{% extends "_base.html" %}{% block body %}
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td class="ttl">{{ T.nav_inq }} &raquo; {{ m.name }}</td></tr>
+<tr><td style="padding-top:8px">
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td valign="top" width="50%">
+  <table cellpadding="0" cellspacing="3">
+  <tr><td class="lbl">{{ T.member_label }}</td><td class="val">{{ m.number }}</td></tr>
+  <tr><td class="lbl">Name</td><td class="val">{{ m.name }}</td></tr>
+  <tr><td class="lbl">Date of Birth</td><td class="val">{{ m.dob }}</td></tr>
+  <tr><td class="lbl">SSN / TIN</td><td class="val">{{ m.ssn }}</td></tr>
+  </table></td>
+  <td valign="top" width="50%">
+  <table cellpadding="0" cellspacing="3">
+  <tr><td class="lbl">Phone</td><td class="val">{{ m.phone }}</td></tr>
+  <tr><td class="lbl">Address</td><td class="val">{{ m.address }}</td></tr>
+  <tr><td class="lbl">Status</td><td class="val">{{ m.status }}</td></tr>
+  </table></td></tr></table>
+</td></tr>
+<tr><td style="padding-top:14px"><b>Accounts</b>
+<table class="grid" width="100%" cellpadding="0" cellspacing="0" style="margin-top:4px;border-collapse:collapse">
+<tr><td class="h">Product</td><td class="h">Account</td><td class="h">Status</td><td class="h">Last Activity</td></tr>
+{% for a in m.accounts %}
+<tr><td><a href="/msc/acct/{{ a.number }}">{{ T.products[a.product] }}</a></td><td>{{ a.number }}</td><td>{{ a.status }}</td><td>{{ a.last_activity }}</td></tr>
+{% endfor %}
+</table></td></tr></table>
+{% endblock %}

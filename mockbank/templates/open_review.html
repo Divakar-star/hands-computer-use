@@ -1,0 +1,16 @@
+{% extends "_base.html" %}{% block body %}
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td class="ttl">Confirm New Sub-Account - Step 2 of 2</td></tr>
+<tr><td style="padding-top:10px">
+<table cellpadding="0" cellspacing="3">
+<tr><td class="lbl">{{ T.member_label }}</td><td class="val">{{ m.number }} - {{ m.name }}</td></tr>
+<tr><td class="lbl">Account Type</td><td class="val">{{ T.products[d.product] }}</td></tr>
+<tr><td class="lbl">Initial Deposit</td><td class="val">{{ money(d.cents) }}</td></tr>
+<tr><td class="lbl">Nickname</td><td class="val">{{ d.nick or '(none)' }}</td></tr>
+<tr><td class="lbl">Funding Source</td><td class="val">{{ src_label }}</td></tr>
+</table>
+<p class="err">Review the details above. Confirming posts this account to the core system and cannot be reversed.</p>
+<form method="post" action="/msc/open/commit" style="display:inline">
+<input type="hidden" name="tok" value="{{ tok }}"><input type="submit" value="Confirm and Submit"></form>
+&nbsp; <a href="/msc/open">Cancel</a>
+</td></tr></table>
+{% endblock %}

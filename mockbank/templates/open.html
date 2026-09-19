@@ -1,0 +1,16 @@
+{% extends "_base.html" %}{% block body %}
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td class="ttl">{{ T.nav_open }} - Step 1 of 2</td></tr>
+{% if error %}<tr><td class="err">{{ error }}</td></tr>{% endif %}
+<tr><td style="padding-top:10px">
+<form method="post" action="/msc/open/review">
+<table cellpadding="0" cellspacing="4">
+<tr><td class="lbl">{{ T.member_label }}</td><td class="val"><input type="text" name="o_mbr" size="10" maxlength="10" value="{{ f.get('o_mbr','') }}" autocomplete="off"></td></tr>
+<tr><td class="lbl">Account Type</td><td class="val"><select name="o_typ"><option value="">-- select --</option>{% for c in openable %}<option value="{{ c }}" {{ 'selected' if f.get('o_typ')==c }}>{{ T.products[c] }}</option>{% endfor %}</select></td></tr>
+<tr><td class="lbl">Initial Deposit</td><td class="val">$ <input type="text" name="o_dep" size="10" value="{{ f.get('o_dep','') }}" autocomplete="off"></td></tr>
+<tr><td class="lbl">Nickname (optional)</td><td class="val"><input type="text" name="o_nick" size="24" value="{{ f.get('o_nick','') }}" autocomplete="off"></td></tr>
+<tr><td class="lbl">Funding Source</td><td class="val"><input type="radio" name="o_src" value="chk" {{ 'checked' if f.get('o_src')=='chk' }}> Existing share draft &nbsp; <input type="radio" name="o_src" value="cash" {{ 'checked' if f.get('o_src')=='cash' }}> Cash</td></tr>
+<tr><td class="lbl">Disclosures</td><td class="val"><input type="checkbox" name="o_cns" value="1" {{ 'checked' if f.get('o_cns') }}> Member consent and disclosures provided</td></tr>
+<tr><td></td><td style="padding-top:6px"><input type="submit" value="Continue &gt;&gt;"></td></tr>
+</table></form>
+</td></tr></table>
+{% endblock %}
