@@ -3,3 +3,5 @@ playwright>=1.45
 pydantic>=2.6
 anthropic>=0.40
 pytest>=8.0
+openai>=1.40
+streamlit>=1.30
