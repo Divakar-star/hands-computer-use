@@ -35,8 +35,8 @@ def main() -> None:
     ap.add_argument("--cap", default=str(ROOT / "capabilities" / "msc.open_subaccount_to_review.json"))
     args = ap.parse_args()
     cap = with_commit_step(load_capability(args.cap))
-    inputs = {"member_id": "12345", "account_type": "SAV", "initial_deposit": "25.00", "nickname": "Demo",
-              "member_consent_confirmed": True}
+    inputs = {"member_number": "12345", "account_type": "SAV", "initial_deposit": "25.00", "nickname": "Demo",
+              "member_consent_and_disclosures_provided": True}
     with MockServer(port=8765) as srv:
         res = replay(cap, inputs, target=srv.url, policy=load_policy(ROOT / "policies" / "msc.policy.json"),
                      out_dir=ROOT / "evidence" / "_handoff-demo", headless=False, label="handoff-demo",

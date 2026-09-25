@@ -61,12 +61,12 @@ python -m hands discover --spawn-mock \
   --provider openai            # or: --provider anthropic
 
 # 2) REPLAY the saved artifact: no LLM, typed inputs, structured result
-python -m hands replay capabilities/msc.member_savings_balance.json --spawn-mock --input member_id=12345 --shots
+python -m hands replay capabilities/msc.member_savings_balance.json --spawn-mock --input member_number=12345 --shots
 
 # 3) REPLAY under runtime conditions (each prints a structured result; exit code 0 = success/business outcome)
-python -m hands replay capabilities/msc.member_savings_balance.json --spawn-mock --input member_id=99999            # business outcome: record_not_found
-python -m hands replay capabilities/msc.member_savings_balance.json --spawn-mock --input member_id=12345 --mock-faults notice           # recovered
-python -m hands replay capabilities/msc.member_savings_balance.json --spawn-mock --input member_id=12345 --mock-faults app_error_acct    # hard failure + evidence
+python -m hands replay capabilities/msc.member_savings_balance.json --spawn-mock --input member_number=99999            # business outcome: record_not_found
+python -m hands replay capabilities/msc.member_savings_balance.json --spawn-mock --input member_number=12345 --mock-faults notice           # recovered
+python -m hands replay capabilities/msc.member_savings_balance.json --spawn-mock --input member_number=12345 --mock-faults app_error_acct    # hard failure + evidence
 
 # 4) What an AI agent sees: saved capabilities as callable tool specs
 python -m hands catalog
